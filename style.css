@@ -1,0 +1,205 @@
+:root {
+  --cor-botao: #c5b17a;
+  --borda-marrom: #a95f3d;
+  --borda-creme: #fff0d9;
+  --margem-faixa-vertical: 20px;
+  --altura-faixa: 88px;
+  --tamanho-tile: 112px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: #c5b17a;
+}
+
+.tela-inicial {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.background-pan {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  animation: mover-fundo 18s linear infinite;
+}
+
+/* isso aq bicho, é pras lupas ficarem independente */
+.background-grid {
+  position: absolute;
+  display: grid;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+
+.lupa-tile {
+  width: var(--tamanho-tile);
+  height: var(--tamanho-tile);
+  background-image: url("assets/lupa.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  transform-origin: center;
+  animation: girar-tile 4s steps(4, end) infinite;
+  will-change: transform;
+}
+
+@keyframes girar-tile {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes mover-fundo {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(var(--tamanho-tile), calc(-1 * var(--tamanho-tile)), 0); }
+}
+
+/* Nao sei oq ta causando isso, mas por algum motivo, ta tendo aquela linha estranha entre a separação
+de um bloco de tiles. Isso é estranho pq eu não achei motivo pra isso acontecer. Na internet falam só
+pra fazer os tiles darem overlay um em cima do outro, mas isso não resolve de verdade o problema. Só
+enfia pra debaixo do tapete. Eu provavelmente vou te perguntar sobre isso na proxima aula que tiver.
+Ou já te perguntei, não sei quando você vai vistar isso KKKKKKKKKKK */
+
+.faixa {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  height: var(--altura-faixa);
+  background-image: url("assets/Faixa.png");
+  background-repeat: repeat-x;
+  background-size: 220px var(--altura-faixa);
+  pointer-events: none;
+}
+
+.faixa-superior {
+  top: var(--margem-faixa-vertical);
+  animation: faixa-direita 14s linear infinite;
+}
+
+.faixa-inferior {
+  bottom: var(--margem-faixa-vertical);
+  animation: faixa-direita 14s linear infinite;
+  animation-delay: -17s;
+}
+
+@keyframes faixa-direita {
+  from { background-position-x: 0; }
+  to   { background-position-x: 220px; }
+}
+
+/* Sim, pensei em fazer a faixa de cima e de baixo irem pra
+direções opostas. Mas assim, você extendeu só por um dia
+e isso vai comer um tempo meio cabuloso até eu descobrir como
+KKLKKKKK que sono, tá acabando a bomba do tempo. */
+
+.conteudo-central {
+  position: absolute;
+  z-index: 3;
+  top: 47%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(8px, 2vh, 20px);
+  width: min(90vw, 680px);
+  transform: translate(-50%, -50%);
+}
+
+.logo {
+  display: block;
+  width: min(100%, 560px);
+  height: auto;
+  object-fit: contain;
+}
+
+.botao-play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  min-height: 54px;
+  padding: 10px 34px;
+  border: 4px solid var(--borda-creme);
+  outline: 3px solid var(--cor-marrom);
+  outline-offset: 2px;
+  border-radius: 10px;
+  background: var(--cor-botao);
+  color: var(--borda-creme);
+  box-shadow: 0 5px 0 rgb(75 48 31 / 28%);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-shadow: 0 1px 0 var(--borda-marrom);
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+/* Estranho, tá mudando a posição dependendo da cor que eu coloco???? isso não deveria funcionar assim. */
+
+.botao-play:hover {
+  filter: brightness(1.07);
+  transform: translateY(-2px);
+}
+
+.botao-play:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgb(75 48 31 / 28%);
+}
+
+.botao-play:focus-visible {
+  outline: 4px solid var(--borda-creme);
+  outline-offset: 5px;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --margem-faixa-vertical: 12px;
+    --altura-faixa: 62px;
+    --tamanho-tile: 82px;
+  }
+
+  .faixa {
+    background-size: 155px var(--altura-faixa);
+  }
+
+  .conteudo-central {
+    top: 47%;
+    width: min(92vw, 480px);
+  }
+
+  .botao-play {
+    min-width: 130px;
+    min-height: 48px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background-pan,
+  .lupa-tile,
+  .faixa {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,228 @@
+:root {
+  --cor-botao: #c5b17a;
+  --borda-marrom: #a95f3d;
+  --borda-creme: #fff0d9;
+  --texto-marrom: #5a3622;
+  --altura-caixa: 24svh;
+  --margem-caixa: 4svh;
+  --sobreposicao: 24px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: #000;
+}
+
+.jogo {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cenario {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-color: var(--cor-botao);
+  background-position: center;
+  background-size: cover;
+}
+
+/* o - xsvh serve pra controlar o tamanho caso haja dúvida. Se não fica grande demaisssss */
+
+.portraits {
+  position: absolute;
+  z-index: 1;
+  right: 4vw;
+  bottom: calc(var(--margem-caixa) + var(--altura-caixa) - var(--sobreposicao));
+  height: calc(100svh - (var(--margem-caixa) + var(--altura-caixa) - var(--sobreposicao)) - 18svh);
+  max-width: 50vw;
+  pointer-events: none;
+}
+
+.portraits img {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: bottom right;
+}
+
+.portraits img:not([src]),
+.portraits img[src=""] {
+  visibility: hidden;
+}
+
+
+.caixa-dialogo {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: var(--margem-caixa);
+  width: min(92vw, 1000px);
+  height: var(--altura-caixa);
+  padding: 34px 40px 28px;
+  border: 6px solid var(--borda-marrom);
+  border-radius: 22px;
+  background: var(--borda-creme);
+  color: var(--texto-marrom);
+  box-shadow: 0 6px 0 rgb(75 48 31 / 28%);
+  transform: translateX(-50%);
+}
+
+.caixa-nome {
+  position: absolute;
+  top: -26px;
+  left: 26px;
+  min-width: 110px;
+  padding: 4px 22px;
+  border: 5px solid var(--borda-marrom);
+  border-radius: 14px;
+  background: var(--borda-creme);
+  color: var(--borda-marrom);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.caixa-nome:empty {
+  display: none;
+}
+
+.texto {
+  margin: 0;
+  font-size: clamp(1.05rem, 2.4vw, 1.5rem);
+  line-height: 1.5;
+}
+
+.seta {
+  position: absolute;
+  right: 22px;
+  bottom: 12px;
+  color: var(--borda-marrom);
+  font-size: 1.1rem;
+  opacity: 0;
+}
+
+.seta.visivel {
+  opacity: 1;
+  animation: pulsar 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes pulsar {
+  from { transform: translateY(0); }
+  to   { transform: translateY(4px); }
+}
+
+
+.escolhas {
+  position: absolute;
+  z-index: 4;
+  top: 38%;
+  left: 50%;
+  display: flex;
+  gap: 28px;
+  transform: translate(-50%, -50%);
+}
+
+.escolhas[hidden] {
+  display: none;
+}
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  min-height: 54px;
+  padding: 10px 34px;
+  border: 4px solid var(--borda-creme);
+  outline: 3px solid var(--borda-marrom);
+  outline-offset: 2px;
+  border-radius: 10px;
+  background: var(--cor-botao);
+  color: var(--borda-creme);
+  box-shadow: 0 5px 0 rgb(75 48 31 / 28%);
+  font-family: inherit;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-shadow: 0 1px 0 var(--borda-marrom);
+  cursor: pointer;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.botao:hover {
+  filter: brightness(1.07);
+  transform: translateY(-2px);
+}
+
+.botao:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgb(75 48 31 / 28%);
+}
+
+.botao:focus-visible {
+  outline: 4px solid var(--borda-creme);
+  outline-offset: 5px;
+}
+
+.fade {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+}
+
+.fade.ativo {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --altura-caixa: 30svh;
+  }
+  .caixa-dialogo {
+    padding: 30px 22px 26px;
+  }
+
+  .portraits {
+    right: 0;
+    max-width: 70vw;
+  }
+
+  .botao {
+    min-width: 120px;
+    min-height: 48px;
+    font-size: 1.1rem;
+  }
+
+  .escolhas {
+    gap: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seta.visivel { animation: none; }
+  .fade { transition-duration: 0.01s; }
+}

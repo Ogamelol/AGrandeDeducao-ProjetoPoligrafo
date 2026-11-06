@@ -1,0 +1,25 @@
+Relatório de uso de IA
+—————————————
+
+1) Eu usei pra pegar referência de como fazer a faixa (que tem no menuzinho inicial) Já que eu tava com dificuldade de desenhar. No fim não ajudou em ABSOLUTAMENTE NADA e eu tive que desenhar uma do mesmo jeito.
+
+2) Usei para desenvolver uma paleta de cores melhor. No fim eu descartei umas corer (tipo um laranja, que eu troquei pelo marrom por que combinava mais)
+
+3) Usei pra pedir dica de como desenhar um personagem chibi. Também não me foi muito útil então só peguei referência do jogo Rythm Heaven.
+
+4) Descobri o rotate e como usar steps com a IA. Não havia usado rotate ainda então fazia ideia. Ajudou bastante na hora que eu tive que fazer as lupas.
+
+5) Eu usei na hora de descobrir o cálculo pro jogo.css na parte do posicionamento dos portraits. Tava ficando grande e muito fora de posição por conta das dimensões (E mudava muito dependendo do tamanho da tela), e pra não depender de @query, eu taquei lá. Resultou em algo bem sólido, mas precisa de refino.
+
+6) Caixa de texto. Sim, perdão, mas eu apanhei muito pra isso, nunca tinha feito.
+
+7) Function falar foi planejada infelizmente pela IA. Eu genuinamente não achei informação de como resolver de ter que clicar no texto pras perguntas aparecerem, e tava me enchendo o saco, então cedi.
+
+
+
+
+Os assets e boa parte do código foi eu (e coff coff alguns usuários da internet).
+
+É, infelizmente tenho o desgosto de dizer que desenhei os assets. Prometo fazer um chibi melhor na próxima vez, nessa eu perdi feio. Não tive tempo para desenhar um fundo por conta do quão stackado de trabalhos de outras matérias eu estou, então vai ser isso aí mesmo, sem combinar KKKKKKKK
+
+Não tive tempo de muita coisa na vdd, mas estou satisfeito por enquanto. Tá mal polido por outro lado, sorry! É isso.

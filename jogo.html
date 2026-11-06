@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#c5b17a">
+  <title>Jogo</title>
+  <link rel="stylesheet" href="jogo.css">
+  <script src="jogo.js" defer></script>
+</head>
+<body>
+  <main class="jogo" id="jogo">
+
+    <!-- OBRIGADO RANDOM DO REDDIT. E o Hansen Classes. Tem uma thread muito boa no Solo Learn. -->
+    
+    <div class="cenario" id="cenario" aria-hidden="true"></div>
+
+    
+    <div class="portraits" aria-hidden="true">
+      <img id="portrait" alt="">
+    </div>
+
+    
+    <div class="escolhas" id="escolhas" hidden>
+      <button class="botao" id="btn-sim" type="button">SIM</button>
+      <button class="botao" id="btn-nao" type="button">NÃO</button>
+    </div>
+
+    
+    <section class="caixa-dialogo" aria-live="polite">
+      <div class="caixa-nome" id="nome"></div>
+      <p class="texto" id="texto"></p>
+      <span class="seta" id="seta" aria-hidden="true">▼</span>
+    </section>
+
+    
+    <div class="fade ativo" id="fade" aria-hidden="true"></div>
+  </main>
+</body>
+</html>
